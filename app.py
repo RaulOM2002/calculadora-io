@@ -1,4 +1,5 @@
 import streamlit as st
+from metodos import simplex
 
 st.set_page_config(page_title="Calculadora IO", page_icon=":material/calculate:", layout="wide")
 
@@ -270,15 +271,18 @@ def pagina_metodo(nombre):
     st.button("← Volver al inicio", on_click=ir_a, args=("Inicio",))
     st.header(f"{TODOS[nombre]['icono']} {nombre}")
     descripcion(nombre)
-    st.info("interfaz de mi compañero")
 
-    tab_datos, tab_proc, tab_res = st.tabs(["Datos", "Procedimiento", "Resultado"])
-    with tab_datos:
-        st.write("Aquí se ingresan los datos del problema.")
-    with tab_proc:
-        st.write("Aquí se muestran las iteraciones.")
-    with tab_res:
-        st.metric("Valor óptimo (Z)", "—")
+    if nombre == "Simplex":
+        simplex.mostrar()
+    else:
+        st.info("interfaz de mi compañero")
+        tab_datos, tab_proc, tab_res = st.tabs(["Datos", "Procedimiento", "Resultado"])
+        with tab_datos:
+            st.write("Aquí se ingresan los datos del problema.")
+        with tab_proc:
+            st.write("Aquí se muestran las iteraciones.")
+        with tab_res:
+            st.metric("Valor óptimo (Z)", "—")
 
 
 # ---------- Mostrar la página elegida ----------

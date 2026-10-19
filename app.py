@@ -1,5 +1,6 @@
 import streamlit as st
 from metodos import simplex
+from metodos import grafico 
 
 st.set_page_config(page_title="Calculadora IO", page_icon=":material/calculate:", layout="wide")
 
@@ -12,6 +13,20 @@ st.markdown(
     .pie {text-align: center; opacity: 0.6; font-size: 0.85rem; margin-top: 3rem;}
     
     [data-testid="stSidebar"] h1 {text-align: center;}
+
+    [data-testid="InputInstructions"] {
+    display: none;
+    }
+    
+    [class*="st-key-grafico_rest"][class*="_signo"] [data-testid="stWidgetLabel"] {
+    justify-content: center;
+    text-align: center;
+    }
+    [class*="st-key-grafico_rest"][class*="_signo"] [data-testid="stRadio"] > div,
+    [class*="st-key-grafico_rest"][class*="_signo"] [role="radiogroup"] {
+    width: 100%;
+    justify-content: center;
+    }   
 
     /* Tarjetas clicables */
     [class*="st-key-card_"] {
@@ -274,6 +289,10 @@ def pagina_metodo(nombre):
 
     if nombre == "Simplex":
         simplex.mostrar()
+
+    elif nombre == "Método Gráfico":
+        grafico.mostrar()
+
     else:
         st.info("interfaz de mi compañero")
         tab_datos, tab_proc, tab_res = st.tabs(["Datos", "Procedimiento", "Resultado"])

@@ -1,6 +1,9 @@
 import streamlit as st
 from metodos import simplex
-from metodos import grafico 
+from metodos import grafico
+from metodos import noroeste 
+from metodos import costominimo 
+from metodos import vogel 
 
 st.set_page_config(page_title="Calculadora IO", page_icon=":material/calculate:", layout="wide")
 
@@ -292,6 +295,15 @@ def pagina_metodo(nombre):
 
     elif nombre == "Método Gráfico":
         grafico.mostrar()
+
+    elif nombre == "Esquina Noroeste":
+        noroeste.mostrar()
+
+    elif nombre == "Costo Mínimo":
+        costominimo.mostrar()
+
+    elif nombre == "Vogel":
+        vogel.mostrar()
 
     else:
         st.info("interfaz de mi compañero")
